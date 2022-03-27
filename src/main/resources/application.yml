@@ -1,0 +1,22 @@
+spring:
+  datasource:
+    url: jdbc:h2:tcp://localhost/~/jpashop
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
+
+  jpa:
+    hibernate:
+      #application 실행 시점에 내가 가지고 있는 테이블을 다 지우고(내가 있는 Entity 정보) 다시 생성을 한다.
+      ddl-auto: create
+    properties:
+      hibernate:
+#        로그 기록은 logger로 찍어야 하므로 sql문을 안 써야 함
+#        show_sql: true
+        format_sql: true
+
+server:
+  port: 9090
+
+logging.level:
+  org.hibernate.SQL: debug
