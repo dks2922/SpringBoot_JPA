@@ -20,8 +20,6 @@ public class Delivery {
     private Address address;
 
     @Enumerated(EnumType.STRING)
-//    @OneToOne
-//    @JoinColumn(name = "delivery_status_ID")
     private DeliveryStatus status;  //READY, COMP
 
 }

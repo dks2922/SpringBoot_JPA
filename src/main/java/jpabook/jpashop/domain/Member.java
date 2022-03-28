@@ -14,6 +14,7 @@ public class Member {
     @Id @GeneratedValue
     @Column(name = "member_id")
     private Long id;
+
     private String name;
 
     @Embedded       //여기에 내장을 할꺼다
@@ -23,7 +24,5 @@ public class Member {
     @OneToMany(mappedBy = "member")      // 1 : 다
 //    mappedBy = 읽기전용
     private List<Order> orders = new ArrayList<>();
-
-    private Delivery delivery;
 
 }
