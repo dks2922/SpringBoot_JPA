@@ -2,6 +2,7 @@ package jpabook.jpashop.controller;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.data.jpa.repository.Query;
 
 import javax.validation.constraints.NotEmpty;
 
