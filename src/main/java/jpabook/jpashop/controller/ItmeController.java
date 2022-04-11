@@ -47,4 +47,11 @@ public class ItmeController {
         return "items/ItemList";
     }
 
+    @GetMapping("/items/")
+    public String edit(Model model) {
+        List<Item> items = itemService.findItems();
+        model.addAttribute("items",items);
+
+        return "items/ItemList";
+    }
 }
