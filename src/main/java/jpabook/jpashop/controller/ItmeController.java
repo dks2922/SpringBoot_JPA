@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -53,15 +54,32 @@ public class ItmeController {
         Book item = (Book) itemService.findOne(itemId);
 
         BookForm form = new BookForm();
-        form.setAuthor(form.getAuthor());
-        form.setId(form.getId());
-        form.setIsbn(form.getIsbn());
-        form.setPrice(form.getPrice());
-        form.setStockQuantity(form.getStockQuantity());
+        form.setName(item.getName());
+        form.setAuthor(item.getAuthor());
+        form.setId(item.getId());
+        form.setIsbn(item.getIsbn());
+        form.setPrice(item.getPrice());
+        form.setStockQuantity(item.getStockQuantity());
 
         model.addAttribute("form",form);
 
-
         return "items/updateItemForm";
+    }
+
+    @PostMapping("items/{itemId}/edit")
+    public String updateItem(@PathVariable String itemId, @ModelAttribute("form") BookForm form) {
+
+        Book book = new Book();
+        book.setId(form.getId());
+        book.setName(form.getName());
+        book.setPrice(form.getPrice());
+        book.setStockQuantity(form.getStockQuantity());
+        book.setAuthor(form.getAuthor());
+        book.setIsbn(form.getIsbn());
+
+        itemService.saveItem(book);
+        return "redirect:/items";
+
+
     }
 }
