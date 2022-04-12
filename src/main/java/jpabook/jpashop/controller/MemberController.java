@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.validation.Valid;
@@ -49,5 +50,24 @@ public class MemberController {
         List<Member> members = memberService.findMembers();
         model.addAttribute("members",members);
         return "members/MemberList";
+    }
+
+//    @GetMapping("/members/1/edit")
+    @GetMapping("/members/{memberId}/edit")
+    public String updateMemberForm(@PathVariable("memberId") Long memberId, Model model){
+
+        System.out.println("controller.updateItemForm == start");
+//        Member members = (Member) memberService.findOne(memberId);
+//
+//        MemberForm form = new MemberForm();
+//
+//        form.setName(members.getName());
+////        form.setName(members.getName());
+////        form.setStreet(members.getAddress(form.getCity(),form.getZipcode(),form.getStreet()));
+////        form.setZipcode(members.getZipcode());
+
+//        model.addAttribute("form",form);
+        System.out.println("controller.updateItemForm == end");
+        return "members/updateMemberForm";
     }
 }
